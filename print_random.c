@@ -1,26 +1,23 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <time.h> // needed for seeding random number generator
+#include <time.h>
 
-#include "random.h" // header file for random.c functions
+#include "random.h" /* includes randchar function */
 
-char* rand_string_alloc(size_t size) {
-     char *s = malloc(size + 1); /* allocate memory for size characters plus the null terminator */
 
-     if (s) { /* if memory call succeeds call rand_string which fills a string with random characters */
-        rand_string(s, size);
-     }
-     return s; /* return the pointer to the beginning of the string */
+int main()
+{
+    /* initalizes an int variable */
+	int a;
+
+	/* seed the randomizer */
+	srand( (unsigned)time(NULL) );
+
+	printf("Today's random word: ");
+    /* runs through a loop seven times each time printing the random character generated from randchar */
+	for(a=0;a<7;a++)
+		putchar( randchar() );
+	putchar('\n');
+
+	return(0);
 }
-
-int main(int argc, char *argv[]) {
-    srand(time(NULL)); // seeds random number generator
-
-    /* allocate memory for a string of 7 characters */
-    char *s = rand_string_alloc(7);  
-    if (s) { /* if memory was successfully allocated print random string */
-        printf("%s\n", s);
-    }
-    return 0;
-}
-
