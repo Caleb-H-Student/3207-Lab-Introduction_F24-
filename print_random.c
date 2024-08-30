@@ -4,7 +4,6 @@
 
 #include "random.h" /* includes randchar function */
 
-
 int main()
 {
     /* initalizes an int variable */
